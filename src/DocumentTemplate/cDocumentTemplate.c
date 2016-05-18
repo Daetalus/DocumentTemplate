@@ -405,10 +405,10 @@ MM_has_key(MM *self, PyObject *args)
   if ((key=MM_cget(self, key, 0)))
     {
       Py_DECREF(key);
-      return PyInt_FromLong(1);
+      return PyLong_FromLong(1);
     }
   PyErr_Clear();
-  return PyInt_FromLong(0);
+  return PyLong_FromLong(0);
 }
 
 static struct PyMethodDef MM_methods[] = {
@@ -446,7 +446,7 @@ MM_getattro(MM *self, PyObject *name)
   if (PyString_Check(name))
     {
       if (strcmp(PyString_AsString(name),"level")==0)
-	return PyInt_FromLong(self->level);
+	return PyLong_FromLong(self->level);
     }
   
   if (self->dict)
@@ -470,7 +470,7 @@ MM_setattro(MM *self, PyObject *name, PyObject *v)
     {
       if (strcmp(PyString_AsString(name),"level")==0)
 	{
-	  self->level=PyInt_AsLong(v);
+	  self->level=PyLong_AsLong(v);
 	  if (PyErr_Occurred()) return -1;
 	  return 0;
 	}
@@ -894,9 +894,9 @@ safe_callable(PyObject *self, PyObject *args)
   UNLESS(PyArg_ParseTuple(args,"O", &ob)) return NULL;
   res = safe_PyCallable_Check(ob);
   if (res)
-    return PyInt_FromLong(1);
+    return PyLong_FromLong(1);
   else
-    return PyInt_FromLong(0);
+    return PyLong_FromLong(0);
 }
 
 static PyObject *
