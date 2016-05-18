@@ -40,9 +40,9 @@ typedef struct {
   PyObject *guarded_getattr;
 } InstanceDictobject;
 
-staticforward PyExtensionClass InstanceDictType;
+static PyExtensionClass InstanceDictType;
 
-staticforward PyObject *_join_unicode(PyObject *prejoin);
+static PyObject *_join_unicode(PyObject *prejoin);
 
 static PyObject *
 InstanceDict___init__(InstanceDictobject *self, PyObject *args)
@@ -188,7 +188,7 @@ static PyExtensionClass InstanceDictType = {
   (printfunc)0,	/*tp_print*/
   (getattrfunc)0,		/*obsolete tp_getattr*/
   (setattrfunc)0,		/*obsolete tp_setattr*/
-  (cmpfunc)0,	/*tp_compare*/
+  0,	/*tp_compare*/
   (reprfunc)InstanceDict_repr,		/*tp_repr*/
   0,		/*tp_as_number*/
   0,		/*tp_as_sequence*/
@@ -212,7 +212,7 @@ typedef struct {
   PyObject *data;
 } MM;
 
-staticforward PyExtensionClass MMtype;
+static PyExtensionClass MMtype;
 
 static PyObject *
 MM_push(MM *self, PyObject *args)
@@ -535,7 +535,7 @@ static PyTypeObject DictInstanceType = {
   (printfunc)0,
   (getattrfunc)0,
   (setattrfunc)0,
-  (cmpfunc)0,
+  0,
   (reprfunc)0,
   0, 0, 0,
   (hashfunc)0,
@@ -616,7 +616,7 @@ static PyExtensionClass MMtype = {
 	(printfunc)0,			/*tp_print*/
 	(getattrfunc)0,			/*tp_getattr*/
 	(setattrfunc)0,			/*tp_setattr*/
-	(cmpfunc)0,			/*tp_compare*/
+	0,			        /*tp_compare*/
 	(reprfunc)0,			/*tp_repr*/
 	0,				/*tp_as_number*/
 	0,				/*tp_as_sequence*/
